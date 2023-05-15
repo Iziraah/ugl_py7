@@ -5,7 +5,6 @@
 # Количество строк и имя файла передаются как аргументы функции.
 
 
-import pathlib
 from random import randbytes, randint, uniform, choices
 import random
 import shutil
@@ -111,13 +110,13 @@ def gen_files(data: dict):
         create_file(key, amount_file=val)
 
 my_dict = {
-    '.txt':6,
+    '.txt':4,
     # '.doc':5,
     # '.bin':5,
     # '.pdf':4
 }
 
-gen_files(my_dict)
+# gen_files(my_dict)
 
 # дорабатываем функции из предыдущих задач:
 # генерируйте файлы в указанную директорию - отдельный параметр ф-ции.
@@ -141,8 +140,6 @@ def create_dir(name_dir: str):
 # каждая группа включает файлы с несколькими расширениями.
 # в исходной папке должны оствться только те файлы, которые не подошли для сортировки.
 
-# получ расширение -> ext = os.path.splitext(file_name)[1]
-
 path = 'C:/Users/Маша/Desktop/домашка/пайтон угл/7'
 def make_dir_and_remove():
     new_path = ''
@@ -152,12 +149,11 @@ def make_dir_and_remove():
             ext = os.path.splitext(filename)[1] # получаем расширение файлов
             if (os.path.exists(ext) != True and os.path.exists(ext) != '.py'): # создаем папки
                 os.mkdir(ext)
-            if (os.path.exists(ext) == True):
+            if (os.path.exists(ext) == True and os.path.exists(ext) != '.py'):
                 new_path= os.path.abspath(ext) # получили путь к папке
                 old_path = os.path.abspath(f) # путь к файлу
                 shutil.copy2(f,new_path)
                 os.remove(f)
 
 make_dir_and_remove()
-
-
+# print('hi')
